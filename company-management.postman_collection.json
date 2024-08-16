@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "cbb27236-552d-4698-8d4b-53c3f24fd177",
+		"name": "company-management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29118482",
+		"_collection_link": "https://universal-star-687360.postman.co/workspace/My-Workspace~a0da274f-7eef-457b-8fe2-f28d7a6263c4/collection/29118482-cbb27236-552d-4698-8d4b-53c3f24fd177?action=share&source=collection_link&creator=29118482"
+	},
+	"item": [
+		{
+			"name": "Create company",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tech Innovations Inc.\",\n    \"description\": \"A leading tech company specializing in AI and machine learning.\",\n    \"employeeamount\": 250,\n    \"registered\": true,\n    \"type\": \"Corporations\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/company/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tech Innovations Inc. International\",\n    \"employeeamount\": 115\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/IdOfTheCompanyYouWantToPatch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"IdOfTheCompanyYouWantToPatch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get company",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tech Innovations Inc.\",\n    \"description\": \"A leading tech company specializing in AI and machine learning.\",\n    \"employeeamount\": 250,\n    \"registered\": true,\n    \"type\": \"Corporations\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/66bf2964114005584ba8b1cf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"66bf2964114005584ba8b1cf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete company",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/IdOfCompanyYouWantToDelete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"IdOfCompanyYouWantToDelete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"milicvasilije9@gmail.com\",\n    \"username\": \"vaske\",\n    \"password\": \"novisad\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"vaske\",\n    \"password\": \"novisad\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

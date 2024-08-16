@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  company_service:
+    container_name: company_service
+    build: ./company-service
+    restart: on-failure
+    ports:
+      - 8080:8080
+    environment:
+      APP_PORT: ${APP_PORT}
+      KAFKA_HOST: ${KAFKA_HOST}
+      KAFKA_PORT: ${KAFKA_PORT}
+      USER_SERVICE_HOST: ${USER_SERVICE_HOST}
+      USER_SERVICE_PORT: ${USER_SERVICE_PORT}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    depends_on:
+      - company_db
+  user_service:
+    container_name: user_service
+    build: ./user-service
+    restart: on-failure
+    ports:
+      - 8000:8080
+    environment:
+      APP_PORT: ${APP_PORT}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    depends_on:
+      - company_db
+      - kafka
+  kafka:
+    image: apache/kafka:latest
+    container_name: kafka
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://${KAFKA_HOST}:${KAFKA_PORT}"
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_NUM_PARTITIONS: 1
+  company_db:
+    image: mongo:latest
+    container_name: company_db
+    restart: on-failure
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - mongo_volume:/data/db
+
+volumes:
+  mongo_volume:
