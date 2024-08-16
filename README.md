@@ -29,5 +29,4 @@ After running the application, import postman collection and test endpoints. Aft
 - Create consumer service to consume Kafka events and to store them into the MongoDB or another database as a replica for state restoration or data analytics.
 - Assign roles to the users and add role based authentication. Divide user service to 2 services, authentication and user.
 - Secure connections.
-- Add security.
 - Improve error handling with more custom errors.
