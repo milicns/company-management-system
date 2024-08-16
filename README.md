@@ -22,7 +22,7 @@ docker-compose up
 
 ### API and testing
 - For API testing postman collection is provided, some of the tests are executed as a part of GitHub Actions and linter.
-After running the application, import postman collection and test endpoints. After registration and login use generated token in Auth header to perform Create, Patch and Delete operations.
+After running the application, import postman collection and test endpoints. After registration and login use generated token in Auth header Bearer token to perform Create, Patch and Delete operations.
 
 ### Future steps
 - Improve integration tests. Create test database and test Kafka broker, currently storage is mocked with interface.
