@@ -22,7 +22,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/company/create",
+					"raw": "http://localhost:8080/create",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -82,7 +82,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/66bf2964114005584ba8b1cf",
+					"raw": "http://localhost:8080/IdOfTheCompanyYouWantToGet",
 					"protocol": "http",
 					"host": [
 						"localhost"
